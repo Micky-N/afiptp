@@ -1,0 +1,152 @@
+* {
+    font-size: 16px;
+    font-family: Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+svg {
+    fill: currentColor;
+}
+
+#app {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(58, 61, 61);
+    background-color: rgb(242, 242, 242);
+}
+
+/* CONTENEUR */
+
+.todo-container {
+    width: 50vw;
+    padding: 10px 20px;
+    background-color: white;
+    border-radius: .75rem;
+}
+
+.todo-container h2 {
+    font-weight: bold;
+    text-align: center;
+    font-size: xx-large;
+    margin-bottom: 1.2rem;
+    text-transform: uppercase;
+}
+
+/* FORMULAIRE */
+
+.form {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.form input {
+    padding: .75rem 1rem;
+    outline: none;
+    border-radius: 0.50rem;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    width: 85%;
+    margin-right: 10px;
+}
+
+.form button {
+    padding: .75rem 1rem;
+    border: none;
+    background: #10B981;
+    cursor: pointer;
+    border-radius: 0.50rem;
+    color: white;
+    width: 15%;
+}
+
+/* TACHES */
+
+.task {
+    margin: auto;
+    position: relative;
+}
+
+.task input[type=checkbox] {
+    display: none;
+}
+
+.task label {
+    display: flex;
+    align-items: center;
+    padding: .75rem 1rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    margin: auto;
+}
+
+.task label:hover {
+    background-color: rgb(240, 240, 240);
+}
+
+.task label span.check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.2em;
+    color: transparent;
+    border: gray .1rem solid;
+    border-radius: 100%;
+}
+
+.task.completed label span.check {
+    background-color: #10B981;
+    border-color: #10B981;
+    color: #fff;
+}
+
+.task label p {
+    margin-left: 1rem;
+    font-size: 1rem;
+}
+
+.task.completed label p {
+    text-decoration: line-through;
+    color: #9CA3AF;
+}
+
+.task label span.trash {
+    display: none;
+    color: rgb(151, 1, 1);
+    font-size: 30px;
+    position: absolute;
+    right: .75rem;
+}
+
+.task label:hover span.trash {
+    display: block;
+}
+
+.task label span.trash:hover {
+    color: red;
+}
+
+/* FILTRE */
+
+.filter-container {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.filter-container button.filter {
+    padding: .5rem 1rem;
+    border: none;
+    background: #5610b9;
+    cursor: pointer;
+    border-radius: 0.50rem;
+    color: white;
+}
+
+.filter-container button.filter:hover {
+    background: rgb(70, 0, 168);
+}
