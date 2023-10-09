@@ -7,6 +7,18 @@
     <title>Document</title>
     <script src="https://unpkg.com/vue@3"></script>
     <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 75px;
+            padding: 20px 0;
+        }
+
         #app {
             display: flex;
             flex-direction: column;
@@ -82,31 +94,32 @@
         #content img {
             text-align: center;
             padding: 20px;
-            max-width: 512px;
+            max-height: 312px;
+            margin: auto;
         }
     </style>
 </head>
 
 <body>
+    <h1>TP VUE 3</h1>
     <div id="app">
         <header>
             <div id="action">
-                <button @click="isVisible = !isVisible">{{isVisible ? 'Cacher' : 'Afficher'}}</button>
-                <span :class="{visible: isVisible}">{{ isVisible ? "L'élément est visible !" : "L'élément est caché !"
-                    }}</span>
+                <button @click="isVisible = !isVisible">{{ isVisible ? 'Cacher' : 'Afficher' }}</button>
+                <span :class="{visible: isVisible}">
+                    {{ isVisible ? "L'élément est visible !" : "L'élément est caché !" }}
+                </span>
             </div>
             <div id="form">
-                <input type="url" id="url" v-model="inputUrl" @keypress.enter="imageUrl = inputUrl">
-                <button @click="imageUrl = inputUrl">Actualiser l'image</button>
+                <!-- Appuyer sur la touche ENTREE ou cliquer sur le bouton -->
+                <input type="url" v-model="inputUrl" @keypress.enter="updateImage">
+                <button @click="updateImage">Actualiser l'image</button>
             </div>
         </header>
         <div id="content">
             <img v-show="isVisible" :src="imageUrl">
             <p v-if="isVisible">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem tempora
-                repudiandae
-                explicabo non numquam! Perspiciatis nulla doloribus tempora, dignissimos repudiandae laboriosam odit
-                earum
-                nemo ratione beatae aspernatur quidem ipsam dolore.</p>
+                repudiandae explicabo non numquam! Perspiciatis nulla doloribus tempora, dignissimos repudiandae laboriosam odit earum nemo ratione beatae aspernatur quidem ipsam dolore.</p>
         </div>
     </div>
     <script>
@@ -114,8 +127,13 @@
             data() {
                 return {
                     isVisible: true,
-                    imageUrl: "/vuejs.png",
-                    inputUrl: "/vuejs.png"
+                    imageUrl: "./vuejs.png",
+                    inputUrl: "./vuejs.png"
+                }
+            },
+            methods: {
+                updateImage(){
+                    this.imageUrl = this.inputUrl
                 }
             }
         })
