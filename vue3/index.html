@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <style>
+        #app {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #e0e5f1;
+            border-radius: 20px;
+            overflow: hidden;
+            width: 75vw;
+            margin: auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #c4d1ef;
+        }
+
+        header #action {
+            display: flex;
+            align-items: center;
+        }
+
+        button {
+            border-radius: 7.5px;
+            margin-right: 10px;
+            background: rgb(57, 57, 230);
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: rgb(77, 77, 249);
+        }
+
+        header #action span {
+            color: red;
+        }
+
+        header #action span.visible {
+            color: green;
+        }
+
+        header #form {
+            display: flex;
+            align-items: center;
+        }
+
+        header #form input {
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-right: 10px;
+            width: 250px;
+            border: none;
+        }
+
+        #content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            align-items: center;
+        }
+
+        #content p {
+            text-align: center;
+            padding: 5px 20px;
+            font-size: 18px;
+        }
+
+        #content img {
+            text-align: center;
+            padding: 20px;
+            max-width: 512px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <div id="action">
+                <button @click="isVisible = !isVisible">{{isVisible ? 'Cacher' : 'Afficher'}}</button>
+                <span :class="{visible: isVisible}">{{ isVisible ? "L'élément est visible !" : "L'élément est caché !"
+                    }}</span>
+            </div>
+            <div id="form">
+                <input type="url" id="url" v-model="inputUrl" @keypress.enter="imageUrl = inputUrl">
+                <button @click="imageUrl = inputUrl">Actualiser l'image</button>
+            </div>
+        </header>
+        <div id="content">
+            <img v-show="isVisible" :src="imageUrl">
+            <p v-if="isVisible">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem tempora
+                repudiandae
+                explicabo non numquam! Perspiciatis nulla doloribus tempora, dignissimos repudiandae laboriosam odit
+                earum
+                nemo ratione beatae aspernatur quidem ipsam dolore.</p>
+        </div>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    isVisible: true,
+                    imageUrl: "/vuejs.png",
+                    inputUrl: "/vuejs.png"
+                }
+            }
+        })
+        app.mount('#app')
+    </script>
+</body>
+
+</html>

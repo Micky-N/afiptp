@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <style>
+        #action {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #action button {
+            border-radius: 10px;
+            margin-right: 5px;
+            background: rgb(57, 57, 230);
+            color: #fff;
+            border: none;
+            padding: 5px 10px
+        }
+        #action span {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div id="action">
+            <button @click="isVisible = !isVisible">{{isVisible ? 'Cacher' : 'Afficher'}}</button>
+            <span>{{ isVisible ? "L'élément est visible !" : "L'élément est caché !" }}</span>
+        </div>
+        <p v-if="isVisible">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem tempora repudiandae
+            explicabo non numquam! Perspiciatis nulla doloribus tempora, dignissimos repudiandae laboriosam odit earum
+            nemo ratione beatae aspernatur quidem ipsam dolore.</p>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    isVisible: true
+                }
+            }
+        })
+        app.mount('#app')
+    </script>
+</body>
+
+</html>
