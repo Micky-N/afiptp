@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div class="burger_list">
+            <img @click="setBurger(burger)" v-for="burger in burgers" :key="burger.name"
+                :src="'./images/' + burger.name + '.webp'" :alt="'image ' + burger.name">
+        </div>
+        <div class="filter">
+            <button v-for="filter in filters" :key="filter.name" @click="setFilter(filter)">{{ filter.name
+                }}</button>
+        </div>
+        <div class="burger" v-if="currentBurger">
+            <img :class="currentFilter?.class" @mouseover="showDetail = true" @mouseleave="showDetail = false"
+                :src="'./images/' + currentBurger.name + '.webp'" :alt="'image ' + currentBurger.name">
+            <div class="description" v-if="showDetail">
+                <p>{{ currentBurger.description }}</p>
+                <h2>{{ currentBurger.price }} €</h2>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    burgers: [
+                        { name: 'bigmac', price: 5, description: "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression" },
+                        { name: 'cbo', price: 10, description: "Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme" },
+                        { name: 'cheese', price: 2, description: "Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié" },
+                    ],
+                    filters: [
+                        { name: 'Aucun', class: '' },
+                        { name: 'Sepia', class: 'filter_sepia' },
+                        { name: 'Noir et blanc', class: 'filter_bw' }
+                    ],
+                    currentBurger: null,
+                    showDetail: false,
+                    currentFilter: null
+                }
+            },
+            methods: {
+                /**
+                * @param {{ name: string, price: number, description: string }} burger
+                */
+                setBurger(burger) {
+                    this.currentBurger = burger
+                },
+                /**
+                * @param {{ name: string, class: string }} filter
+                */
+                setFilter(filter) {
+                    this.currentFilter = filter
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+
+</html>

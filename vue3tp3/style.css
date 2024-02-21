@@ -1,0 +1,60 @@
+#app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.filter_sepia {
+    filter: sepia(100%);
+}
+
+.filter_bw {
+    filter: grayscale(100%)
+}
+
+.burger_list {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.burger_list img {
+    width: 100px;
+    height: 100px;
+    margin-right: 50px;
+    cursor: pointer;
+    transition: all 100ms ease-in-out;
+}
+
+.filter button {
+    margin-right: 10px;
+}
+
+.filter button:last-of-type, .burger_list img:last-of-type {
+    margin-right: 0;
+}
+
+.burger_list img:hover {
+    scale: 110%;
+}
+
+.burger {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.burger img {
+    width: 400px;
+    height: 400px;
+}
+
+.burger .description {
+    background-color: gainsboro;
+    padding: 10px 20px;
+    width: 500px;
+    text-align: center;
+}
